@@ -16,11 +16,11 @@ public record Registr(String userEmail,
         }
 
         //Verification if userCountry is Country
-        if(!Pattern.compile("[A-Z]{2}").matcher(userCountry).matches()){
+  /*      if(!Pattern.compile("[A-Z]{2}").matcher(userCountry).matches()){
             System.out.println("Not a valid userCountry "+userCountry);
             throw new IllegalArgumentException("userCountry must be an Country");
         }
-        //Verification if minimumTemperatureDistance is in [0;40]
+    */    //Verification if minimumTemperatureDistance is in [0;40]
         if(!(minimumTemperatureDistance>=0&&minimumTemperatureDistance<=40)){
             System.out.println("Not a valid minimumTemperatureDistance "+minimumTemperatureDistance);
             throw new IllegalArgumentException("minimumTemperatureDistance must be ain [0;40");

@@ -15,6 +15,7 @@ public class TemperatureController {
 
     @GetMapping("/api/temperature")
     public Object temperature(@RequestParam String country){
+        System.out.println("Request of"+country);
         final TemperatureService temperatureService = new TemperatureService();
         final String pattern = "yyyy-MM-dd";
         Calendar calendar = Calendar.getInstance();

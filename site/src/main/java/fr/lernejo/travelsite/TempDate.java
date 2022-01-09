@@ -1,3 +1,5 @@
 package fr.lernejo.travelsite;
 
-public record TempDate(String date, double temperature) {}
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public record TempDate(@JsonProperty("date")String date, @JsonProperty("temperature")double temperature) {}

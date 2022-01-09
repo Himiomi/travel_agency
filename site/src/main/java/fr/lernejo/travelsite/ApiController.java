@@ -42,8 +42,8 @@ public class ApiController {
             while (iterator.hasNext()) {
                 String current=iterator.next();
                 double moyTemp=(siteService.getTemperature(current).get(0).temperature()+siteService.getTemperature(current).get(1).temperature())/2;
-                if (moyTemp>=currentRegistr.minimumTemperatureDistance()&&currentRegistr.weatherExpectation().equals(Weather.WARMER))listDest.add(new PotentialDestinations(String.valueOf(iterator),moyTemp));
-                else if(moyTemp<=currentRegistr.minimumTemperatureDistance()&&currentRegistr.weatherExpectation().equals(Weather.COLDER))listDest.add(new PotentialDestinations(String.valueOf(iterator),moyTemp));
+                if (moyTemp>=currentRegistr.minimumTemperatureDistance()&&currentRegistr.weatherExpectation().equals(Weather.WARMER))listDest.add(new PotentialDestinations(current,moyTemp));
+                else if(moyTemp<=currentRegistr.minimumTemperatureDistance()&&currentRegistr.weatherExpectation().equals(Weather.COLDER))listDest.add(new PotentialDestinations(current,moyTemp));
             }
             return listDest;
         }

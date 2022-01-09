@@ -1,4 +1,6 @@
 package fr.lernejo.travelsite;
 
-public record PotentialDestinations(String country, double temperature){
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public record PotentialDestinations(@JsonProperty("country") String country,@JsonProperty("temperature")  double temperature){
 }

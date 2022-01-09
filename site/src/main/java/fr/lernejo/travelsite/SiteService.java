@@ -9,7 +9,8 @@ import java.util.Objects;
 @Service
 public record SiteService(PredictionEngineClient predictionEngineClient) {
     public List<TempDate> getTemperature(String country) throws IOException {
-
-        return Objects.requireNonNull(predictionEngineClient.getTemperature(country).execute().body()).temperatures();
+        return Objects.requireNonNull(
+                predictionEngineClient.getTemperature(country).execute().body()
+                ).temperatures();
     }
 }

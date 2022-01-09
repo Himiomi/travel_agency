@@ -22,8 +22,9 @@ public class TemperatureController {
         SimpleDateFormat sdf = new SimpleDateFormat(pattern);
         ArrayList<TempDate> listAverageTemp = new ArrayList<>();
         try {
-            listAverageTemp.add(new TempDate(sdf.format(calendar.getTime()), temperatureService.getTemperature(country)));
             calendar.add(Calendar.DATE, -1); //https://stackoverflow.com/questions/212321/how-to-subtract-x-days-from-a-date-using-java-calendar
+            listAverageTemp.add(new TempDate(sdf.format(calendar.getTime()), temperatureService.getTemperature(country)));
+            calendar.add(Calendar.DATE, -1);
             listAverageTemp.add(new TempDate(sdf.format(calendar.getTime()), temperatureService.getTemperature(country)));
             return new listTempOfCountry(country, listAverageTemp);
         }catch (UnknownCountryException error){

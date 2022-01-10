@@ -1,5 +1,6 @@
 package fr.lernejo.travelsite;
 
+import java.io.Serializable;
 import java.util.regex.Pattern;
 
 //https://blogs.oracle.com/javamagazine/post/records-come-to-java
@@ -7,7 +8,7 @@ public record Registr(String userEmail,
                       String userName,
                       String userCountry,
                       Weather weatherExpectation,
-                      Integer minimumTemperatureDistance){
+                      Integer minimumTemperatureDistance)implements Serializable {
     public Registr {
         //Verification if userEmail is mail
         if(!Pattern.compile("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}").matcher(userEmail).matches()){

@@ -4,8 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -25,13 +24,21 @@ public class ApiController {
     }
 
     @PostMapping("/api/inscription")
-    public void inscription(@RequestBody Registr newRegistr){
+    public void inscription(@RequestBody Registr newRegistr) throws IOException {
+
+        PrintWriter writer = new PrintWriter("Inscription.txt", StandardCharsets.UTF_8);
+        writer.println("inscription de "+newRegistr.userName());
+        writer.close();
         listRegistr.add(newRegistr);
     }
 
     @ResponseBody
     @GetMapping("/api/travels")
     public Object travels(@RequestParam String userName) throws IOException {
+
+        PrintWriter writer = new PrintWriter("Travels.txt", StandardCharsets.UTF_8);
+        writer.println("Demande pour "+userName);
+        writer.close();
         String content = new String(Objects.requireNonNull(this.getClass().getClassLoader().getResourceAsStream("countries.txt")).readAllBytes(), StandardCharsets.UTF_8);
         ArrayList<PotentialDestinations> listDest = new ArrayList<PotentialDestinations>();
         Iterator<String> iterator=content.lines().iterator();

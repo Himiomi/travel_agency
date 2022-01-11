@@ -1,10 +1,7 @@
 package fr.lernejo.prediction;
 
-import fr.lernejo.travelsite.PredictionEngineClient;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import retrofit2.Retrofit;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;

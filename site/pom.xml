@@ -11,6 +11,12 @@
 
     <artifactId>site</artifactId>
 
+
+    <properties>
+        <exec.mainClass>fr.lernejo.travelsite.Launcher</exec.mainClass>
+    </properties>
+
+
     <dependencies>
 
         <dependency>

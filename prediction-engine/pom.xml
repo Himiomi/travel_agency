@@ -11,6 +11,10 @@
 
     <artifactId>prediction-engine</artifactId>
 
+    <properties>
+        <exec.mainClass>fr.lernejo.prediction.Launcher</exec.mainClass>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>

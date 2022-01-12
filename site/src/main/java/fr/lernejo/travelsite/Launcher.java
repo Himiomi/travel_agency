@@ -22,28 +22,13 @@ public class Launcher {
 
     @Bean
     PredictionEngineClient predictionEngineClient() {
-        okhttp3.OkHttpClient okHttpClient = new okhttp3.OkHttpClient.Builder()
-            .addNetworkInterceptor(createInterceptor())
-            .build();
         Retrofit retrofit = new Retrofit.Builder()
             .baseUrl("http://localhost:7080/")
-            .client(okHttpClient)
             .addConverterFactory(JacksonConverterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 
         return retrofit.create(PredictionEngineClient.class);
-    }
-    private Interceptor createInterceptor() {
-        return new Interceptor() {
-            @Override
-            public Response intercept(Chain chain) throws IOException {
-                Response originalResponse = chain.proceed(chain.request());
-                return originalResponse.newBuilder()
-                    .header("Cache-Control", "max-age=120, only-if-cached, max-stale=0")
-                    .build();
-            }
-        };
     }
 
 }

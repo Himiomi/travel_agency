@@ -13,8 +13,8 @@ public record SiteService(PredictionEngineClient predictionEngineClient) {
         PrintWriter writer = new PrintWriter("SiteService.txt", StandardCharsets.UTF_8);
         writer.println("Demande de "+country);
         writer.close();
-        return Objects.requireNonNull(
+        return
                 predictionEngineClient.getTemperature(country).execute().body()
-                ).temperatures();
+                .temperatures();
     }
 }

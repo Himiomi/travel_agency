@@ -1,0 +1,1 @@
+User is Registr[userEmail=hello@et.ed, userName=moimoi, userCountry=Afghanistan, weatherExpectation=WARMER, minimumTemperatureDistance=9]

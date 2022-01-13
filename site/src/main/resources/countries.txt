@@ -12,6 +12,34 @@ Botswana
 Brazil
 Brunei
 Bulgaria
+Burkina Faso
+Burundi
+Cabo Verde
+Cambodia
+Cameroon
+Canada
+Central African Republic
+Chad
+Chile
+China
+Colombia
+Comoros
+Congo
+Costa Rica
+Côte d’Ivoire
+Croatia
+Cuba
+Cyprus
+Czech Republic
+Denmark
+Djibouti
+Dominica
+Dominican Republic
+East Timor
+Ecuador
+Egypt
+El Salvador
+Equatorial Guinea
 Eritrea
 Estonia
 Eswatini
@@ -20,3 +48,13 @@ Fiji
 Finland
 France
 Gabon
+The Gambia
+Georgia
+Germany
+Ghana
+Greece
+Grenada
+Guatemala
+Guinea
+Guinea-Bissau
+Guyana

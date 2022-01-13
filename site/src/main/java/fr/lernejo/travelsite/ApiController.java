@@ -25,41 +25,17 @@ public class ApiController {
 
     @PostMapping("/api/inscription")
     public void inscription(@RequestBody Registr newRegistr) throws IOException {
-        try (FileOutputStream fos = new FileOutputStream("object.dat");
-             ObjectOutputStream oos = new ObjectOutputStream(fos)) {
-            oos.writeObject(newRegistr);
-        }catch (IOException ex) {
-            ex.printStackTrace();
-        }
-
-        PrintWriter writer = new PrintWriter("Inscription.txt", StandardCharsets.UTF_8);
-        writer.println("inscription de "+newRegistr.userName());
-        writer.close();
         listRegistr.add(newRegistr);
     }
 
     @ResponseBody
     @GetMapping("/api/travels")
     public Object travels(@RequestParam String userName) throws IOException, ClassNotFoundException {
-        FileInputStream fi = new FileInputStream(new File("object.dat"));
-        ObjectInputStream oi = new ObjectInputStream(fi);
-        PrintWriter writer = new PrintWriter("Travels.txt", StandardCharsets.UTF_8);
-        writer.println("Demande pour "+userName);
-        writer.close();
-        String content = new String(Objects.requireNonNull(this.getClass().getClassLoader().getResourceAsStream("countries.txt")).readAllBytes(), StandardCharsets.UTF_8);
-        ArrayList<PotentialDestinations> listDest = new ArrayList<PotentialDestinations>();
-        Iterator<String> iterator=content.lines().iterator();
-        Registr currentRegistr= (Registr) oi.readObject();;
+        Registr currentRegistr = null;
         for(Registr registr1:listRegistr){if (registr1.userName().equals(userName))currentRegistr=registr1;}
         if(currentRegistr==null) return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Veuillez vous enregistrer");
         else {
-            while (iterator.hasNext()) {
-                String current=iterator.next();
-                double moyTemp=(siteService.getTemperature(current).get(0).temperature()+siteService.getTemperature(current).get(1).temperature())/2;
-                if (moyTemp>=currentRegistr.minimumTemperatureDistance()&&currentRegistr.weatherExpectation().equals(Weather.WARMER))listDest.add(new PotentialDestinations(current,moyTemp));
-                else if(moyTemp<=currentRegistr.minimumTemperatureDistance()&&currentRegistr.weatherExpectation().equals(Weather.COLDER))listDest.add(new PotentialDestinations(current,moyTemp));
-            }
-            return listDest;
+            return siteService.getCountries(currentRegistr.weatherExpectation(),currentRegistr.minimumTemperatureDistance(),currentRegistr.userCountry());
         }
     }
 }

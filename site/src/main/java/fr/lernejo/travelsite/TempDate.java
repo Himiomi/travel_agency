@@ -1,5 +1,17 @@
 package fr.lernejo.travelsite;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.lang.NonNull;
 
-public record TempDate(@JsonProperty("date")String date, @JsonProperty("temperature")double temperature) {}
+public class TempDate{
+    @NonNull final String date;
+    @NonNull final double temperature;
+
+    public TempDate(@NonNull String date, double temperature) {
+        this.date = date;
+        this.temperature = temperature;
+    }
+
+    public double temperature() {
+        return temperature;
+    }
+}

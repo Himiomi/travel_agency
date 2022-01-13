@@ -1,8 +1,28 @@
 package fr.lernejo.travelsite;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.lang.NonNull;
 
 import java.util.List;
+import java.util.Objects;
 
-public record listTempOfCountry(@JsonProperty("country") String country, @JsonProperty("temperatures") List<TempDate> temperatures) {
+public final class listTempOfCountry {
+    @NonNull
+    private final String country;
+    @NonNull
+    private final List<TempDate> temperatures;
+
+    public listTempOfCountry(@NonNull String country, @NonNull List<TempDate> temperatures) {
+        this.country = country;
+        this.temperatures = temperatures;
+    }
+
+    @NonNull
+    public String country() {
+        return country;
+    }
+
+    @NonNull
+    public List<TempDate> temperatures() {
+        return temperatures;
+    }
 }

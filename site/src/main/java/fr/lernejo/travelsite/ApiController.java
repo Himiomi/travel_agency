@@ -7,10 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Stream;
 
 @RestController
 public class ApiController {
@@ -30,12 +26,15 @@ public class ApiController {
 
     @ResponseBody
     @GetMapping("/api/travels")
-    public Object travels(@RequestParam String userName) throws IOException, ClassNotFoundException {
+    public Object travels(@RequestParam String userName) throws IOException {
         Registr currentRegistr = null;
         for(Registr registr1:listRegistr){if (registr1.userName().equals(userName))currentRegistr=registr1;}
         if(currentRegistr==null) return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Veuillez vous enregistrer");
         else {
-            return siteService.getCountries(currentRegistr.weatherExpectation(),currentRegistr.minimumTemperatureDistance(),currentRegistr.userCountry());
+            PrintWriter writer = new PrintWriter("debugAPICONTROLLER.txt", StandardCharsets.UTF_8);
+            writer.println("User is "+currentRegistr);
+            writer.close();
+            return siteService.potentialCountries(currentRegistr.weatherExpectation(),currentRegistr.minimumTemperatureDistance());
         }
     }
 }

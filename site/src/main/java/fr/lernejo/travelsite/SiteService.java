@@ -18,8 +18,8 @@ public record SiteService(PredictionEngineClient predictionEngineClient) {
                 Response<listTempOfCountry> response = predictionEngineClient.getTemperature(country).execute();
                 assert response.body() != null;
                 double moyTemp = (response.body().temperatures().get(0).temperature() + response.body().temperatures().get(0).temperature()) / 2;
-                if (currentCountry.equals(response.body().country())&& moyTemp > minTemp && meteo.equals(Weather.WARMER))listDest.add(new PotentialDestinations(country, moyTemp));
-                else if (currentCountry.equals(response.body().country())&&moyTemp < minTemp && meteo.equals(Weather.COLDER))listDest.add(new PotentialDestinations(country, moyTemp));
+                if (!currentCountry.equals(response.body().country())&& moyTemp > minTemp && meteo.equals(Weather.WARMER))listDest.add(new PotentialDestinations(country, moyTemp));
+                else if (!currentCountry.equals(response.body().country())&&moyTemp < minTemp && meteo.equals(Weather.COLDER))listDest.add(new PotentialDestinations(country, moyTemp));
             } catch (Exception ex) {ex.printStackTrace();}
         }
         return listDest;

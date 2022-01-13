@@ -34,7 +34,7 @@ public class ApiController {
             PrintWriter writer = new PrintWriter("debugAPICONTROLLER.txt", StandardCharsets.UTF_8);
             writer.println("User is "+currentRegistr);
             writer.close();
-            return siteService.potentialCountries(currentRegistr.weatherExpectation(),currentRegistr.minimumTemperatureDistance());
+            return siteService.potentialCountries(currentRegistr.weatherExpectation(),currentRegistr.minimumTemperatureDistance(),currentRegistr.userCountry());
         }
     }
 }

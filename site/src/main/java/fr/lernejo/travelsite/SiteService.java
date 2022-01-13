@@ -25,8 +25,8 @@ public record SiteService(PredictionEngineClient predictionEngineClient) {
             try {
                 Response<listTempOfCountry> response = predictionEngineClient.getTemperature(country).execute();
                 double moyTemp = (response.body().temperatures().get(0).temperature() + response.body().temperatures().get(0).temperature()) / 2;
-                if (moyTemp >= minimumTemperatureDistance && weatherExpectation.equals(Weather.WARMER))listDest.add(new PotentialDestinations(country, moyTemp));
-                else if (moyTemp <= minimumTemperatureDistance && weatherExpectation.equals(Weather.COLDER))listDest.add(new PotentialDestinations(country, moyTemp));
+                if (moyTemp > minimumTemperatureDistance && weatherExpectation.equals(Weather.WARMER))listDest.add(new PotentialDestinations(country, moyTemp));
+                else if (moyTemp < minimumTemperatureDistance && weatherExpectation.equals(Weather.COLDER))listDest.add(new PotentialDestinations(country, moyTemp));
             } catch (Exception ex) {ex.printStackTrace();}
         }
         return listDest;

@@ -6,18 +6,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 @RestController
 public class ApiController {
 
     private  final SiteService siteService;
-    private final ArrayList<Registr> listRegistr ;    //Liste des personnes enregistrées
+    private final ArrayList<Registr> listRegistr = new ArrayList<Registr>();    //Liste des personnes enregistrées
 
     ApiController(SiteService siteService){
         this.siteService=siteService;
-        listRegistr = new ArrayList<Registr>();
     }
 
     @PostMapping("/api/inscription")
@@ -28,7 +26,6 @@ public class ApiController {
     @ResponseBody
     @GetMapping("/api/travels")
     public Object travels(@RequestParam String userName) throws IOException {
-        Registr currentRegistr = null;
         for(Registr registr1:listRegistr){
             if (registr1.userName().equals(userName))return siteService.potentialCountries(registr1);;
         }

@@ -20,16 +20,16 @@ public class TemperatureController {
     @GetMapping("/api/temperature")
     public Object temperature(@RequestParam String country){
         System.out.println("Request of"+country);
-        final TemperatureService temperatureService = new TemperatureService();
+        final TemperatureService temp = new TemperatureService();
+        Calendar date = Calendar.getInstance();
         final String pattern = "yyyy-MM-dd";
-        Calendar calendar = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat(pattern);
         ArrayList<TempDate> listAverageTemp = new ArrayList<>();
         try {
-            calendar.add(Calendar.DATE, -1); //https://stackoverflow.com/questions/212321/how-to-subtract-x-days-from-a-date-using-java-calendar
-            listAverageTemp.add(new TempDate(sdf.format(calendar.getTime()), temperatureService.getTemperature(country)));
-            calendar.add(Calendar.DATE, -1);
-            listAverageTemp.add(new TempDate(sdf.format(calendar.getTime()), temperatureService.getTemperature(country)));
+            for(int i=0;i<2;i++){
+                date.add(Calendar.DATE, -1);
+                listAverageTemp.add(new TempDate(sdf.format(date.getTime()),temp.getTemperature(country)));
+            }
             return new listTempOfCountry(country, listAverageTemp);
         }catch (UnknownCountryException error){
             return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body("ERREUR 417, le pays n'existe pas");

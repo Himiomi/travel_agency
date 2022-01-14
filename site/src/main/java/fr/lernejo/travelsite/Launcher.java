@@ -1,17 +1,10 @@
 package fr.lernejo.travelsite;
 
-import okhttp3.Interceptor;
-import okhttp3.Response;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.converter.jackson.JacksonConverterFactory;
-
-import java.io.IOException;
-
-import static fr.lernejo.travelsite.Weather.*;
 
 @SpringBootApplication
 public class Launcher {

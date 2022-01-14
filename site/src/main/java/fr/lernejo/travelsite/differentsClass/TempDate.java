@@ -1,4 +1,4 @@
-package fr.lernejo.travelsite;
+package fr.lernejo.travelsite.differentsClass;
 
 import org.springframework.lang.NonNull;
 

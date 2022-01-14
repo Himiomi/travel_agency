@@ -1,4 +1,4 @@
-package fr.lernejo.prediction;
+package fr.lernejo.prediction.initalsFiles;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

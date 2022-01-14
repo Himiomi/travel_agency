@@ -1,5 +1,9 @@
 package fr.lernejo.prediction;
 
+import fr.lernejo.prediction.differentsClass.TempDate;
+import fr.lernejo.prediction.initalsFiles.TemperatureService;
+import fr.lernejo.prediction.initalsFiles.UnknownCountryException;
+import fr.lernejo.prediction.differentsClass.listTempOfCountry;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

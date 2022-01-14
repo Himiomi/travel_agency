@@ -1,4 +1,4 @@
-package fr.lernejo.travelsite;
+package fr.lernejo.travelsite.differentsClass;
 
 import java.io.Serializable;
 import java.util.regex.Pattern;

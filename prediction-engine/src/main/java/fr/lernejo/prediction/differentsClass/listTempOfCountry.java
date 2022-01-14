@@ -1,4 +1,4 @@
-package fr.lernejo.prediction;
+package fr.lernejo.prediction.differentsClass;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.lang.NonNull;

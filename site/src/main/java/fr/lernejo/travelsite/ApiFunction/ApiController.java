@@ -1,5 +1,6 @@
-package fr.lernejo.travelsite;
+package fr.lernejo.travelsite.ApiFunction;
 
+import fr.lernejo.travelsite.differentsClass.Registr;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +21,7 @@ public class ApiController {
     }
 
     @PostMapping("/api/inscription")
-    public void inscription(@RequestBody Registr newRegistr) throws IOException {
+    public void inscription(@RequestBody Registr newRegistr) {
         listRegistr.add(newRegistr);
     }
 
@@ -28,14 +29,11 @@ public class ApiController {
     @GetMapping("/api/travels")
     public Object travels(@RequestParam String userName) throws IOException {
         Registr currentRegistr = null;
-        for(Registr registr1:listRegistr){if (registr1.userName().equals(userName))currentRegistr=registr1;}
-        if(currentRegistr==null) return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Veuillez vous enregistrer");
-        else {
-            PrintWriter writer = new PrintWriter("debugAPICONTROLLER.txt", StandardCharsets.UTF_8);
-            writer.println("User is "+currentRegistr);
-            writer.close();
-            return siteService.potentialCountries(currentRegistr.weatherExpectation(),currentRegistr.minimumTemperatureDistance(),currentRegistr.userCountry());
+        for(Registr registr1:listRegistr){
+            if (registr1.userName().equals(userName))return siteService.potentialCountries(registr1);;
         }
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Veuillez vous enregistrer");
+
     }
 }
 //https://itqna.net/questions/69229/retrofit-could-not-locate-responsebody-converter

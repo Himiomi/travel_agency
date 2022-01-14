@@ -1,9 +1,8 @@
-package fr.lernejo.travelsite;
+package fr.lernejo.travelsite.differentsClass;
 
 import org.springframework.lang.NonNull;
 
 import java.util.List;
-import java.util.Objects;
 
 public final class listTempOfCountry {
     @NonNull

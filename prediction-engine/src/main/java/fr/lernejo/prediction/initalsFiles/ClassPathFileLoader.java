@@ -1,4 +1,4 @@
-package fr.lernejo.prediction;
+package fr.lernejo.prediction.initalsFiles;
 
 import java.io.IOException;
 import java.io.InputStream;

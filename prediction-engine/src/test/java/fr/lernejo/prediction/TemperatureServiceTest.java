@@ -1,5 +1,7 @@
 package fr.lernejo.prediction;
 
+import fr.lernejo.prediction.initalsFiles.TemperatureService;
+import fr.lernejo.prediction.initalsFiles.UnknownCountryException;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
